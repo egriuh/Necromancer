@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
     public Animator animator;
 
     public bool isOnGround = true;
+    public bool isRunning;
 
     public float speed;
     public float turnSpeed;
@@ -27,22 +28,33 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Rotation + Turning
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
 
+        // Moving Forward
         verticalInput = Input.GetAxis("Vertical");
         transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime);
         animator.SetFloat("verticalInput", Mathf.Abs(verticalInput));
 
-        if(Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        // Running
+        if(Input.GetKey(KeyCode.LeftShift))
         {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
+            isRunning = true;
+            speed = 60;
+        }
+        else
+        {
+            isRunning = false;
+            speed = 10;
+        }
+        animator.SetBool("isRunning", isRunning);
+
+        // Gather
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            animator.SetTrigger("gathering");
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        isOnGround = true;
-    }
 }
