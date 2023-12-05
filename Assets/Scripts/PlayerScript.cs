@@ -49,12 +49,6 @@ public class PlayerScript : MonoBehaviour
             speed = 10;
         }
         animator.SetBool("isRunning", isRunning);
-
-        // Gather
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            animator.SetTrigger("gathering");
-        }
     }
 
 }
