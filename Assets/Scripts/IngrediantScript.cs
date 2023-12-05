@@ -5,12 +5,10 @@ using UnityEngine;
 public class IngrediantScript : MonoBehaviour
 {
     // Variables
-    public Animator animator;
-
-    public bool canBeGathered;
-
     [Header("Player")]
     public GameObject player;
+
+    public bool canBeGathered;
 
     private void OnMouseDown()
     {
