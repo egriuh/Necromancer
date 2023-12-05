@@ -9,6 +9,7 @@ public class ZombieScript : MonoBehaviour
     public Animator enemyAnim;
     private Rigidbody rb;
     public GameObject player;
+    public GameManager gameManager;
 
     private float speed = 1;
 
@@ -17,6 +18,7 @@ public class ZombieScript : MonoBehaviour
     {
         enemyAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
         player = GameObject.Find("Player");
     }
@@ -37,6 +39,7 @@ public class ZombieScript : MonoBehaviour
         {
             speed = 0;
             enemyAnim.SetTrigger("attack");
+            gameManager.UpdateHealth(-1);
             speed = 1;
         }
     }
