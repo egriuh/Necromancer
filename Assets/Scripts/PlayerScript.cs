@@ -38,7 +38,7 @@ public class PlayerScript : MonoBehaviour
         animator.SetFloat("verticalInput", Mathf.Abs(verticalInput));
 
         // Running
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetButton("Running"))
         {
             isRunning = true;
             speed = 60;

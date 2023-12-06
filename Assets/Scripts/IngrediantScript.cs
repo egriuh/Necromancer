@@ -5,6 +5,7 @@ using UnityEngine;
 public class IngrediantScript : MonoBehaviour
 {
     // Variables
+    private GameManager gameManager;
     [Header("Player")]
     public GameObject player;
 
@@ -19,7 +20,7 @@ public class IngrediantScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class IngrediantScript : MonoBehaviour
             //you probably want to add to the inventory here
 
             Destroy(gameObject, 1.5f);
+            gameManager.UpdateScore(5);
         }
     }
 

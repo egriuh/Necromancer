@@ -11,15 +11,18 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI scoreText;
     public Button restartButton;
 
     private int health;
+    private int score;
     public bool gameOver;
 
     // Start is called before the first frame update
     void Start()
     {
         UpdateHealth(10);
+        UpdateScore(0);
     }
 
     // Update is called once per frame
@@ -41,6 +44,16 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void UpdateScore(int scoreToAdd)
+    {
+        if (!gameOver)
+        {
+            score += scoreToAdd;
+            scoreText.text = "Score: " + score;
+        }
+    }
+
 
     public void RestartGame()
     {
