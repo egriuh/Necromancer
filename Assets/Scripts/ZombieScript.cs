@@ -37,10 +37,8 @@ public class ZombieScript : MonoBehaviour
         // Zombie Attack
         if(collision.gameObject.CompareTag("Player"))
         {
-            speed = 0;
             enemyAnim.SetTrigger("attack");
             gameManager.UpdateHealth(-1);
-            speed = 1;
         }
     }
 }
